@@ -1,131 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-    <meta
-        name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-              />
-                <meta name="theme-color" content="#f7f1eb" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-                  <title>For Kabita ♡</title>
+  <meta name="theme-color" content="#f5eee7">
+  <title>For Kabita ♡</title>
 
-                    <link rel="stylesheet" href="style.css" />
-                    </head>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-                    <body>
+<body>
 
-                      <!-- Floating atmosphere -->
-                        <div class="ambient">
-                            <span></span>
-                                <span></span>
-                                    <span></span>
-                                        <span></span>
-                                            <span></span>
-                                              </div>
+  <!-- Cinematic background -->
+  <div class="background">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
 
-                                                <!-- OPENING -->
-                                                  <main id="opening" class="screen active">
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+    <div class="particle p5"></div>
 
-                                                      <div class="opening-content">
-
-                                                            <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
-
-                                                                  <div class="name-wrap">
-                                                                          <h1>Kabita</h1>
-                                                                                  <div class="gold-line"></div>
-                                                                                          <p class="surname">SHAH</p>
-                                                                                                </div>
-
-                                                                                                      <p class="opening-message">
-                                                                                                              Made with love, patience...<br />
-                                                                                                                      and a little bit of sibling mischief.
-                                                                                                                            </p>
-
-                                                                                                                                  <button id="enterBtn" class="primary-btn">
-                                                                                                                                          <span>Enter the surprise</span>
-                                                                                                                                                  <span class="arrow">→</span>
-                                                                                                                                                        </button>
-
-                                                                                                                                                              <p class="tiny-note">P.S. No skipping ahead. 😌</p>
-
-                                                                                                                                                                  </div>
-
-                                                                                                                                                                    </main>
+    <div class="petal petal-one">✦</div>
+    <div class="petal petal-two">✧</div>
+    <div class="petal petal-three">✦</div>
+  </div>
 
 
-                                                                                                                                                                      <!-- DISCOVERY -->
-                                                                                                                                                                        <main id="discovery" class="screen">
+  <!-- ========================= -->
+  <!-- OPENING -->
+  <!-- ========================= -->
 
-                                                                                                                                                                            <div class="discovery-content">
+  <main id="opening" class="screen active">
 
-                                                                                                                                                                                  <p class="eyebrow">A SMALL DISCOVERY</p>
+    <div class="opening-wrap">
 
-                                                                                                                                                                                        <h2>There are three little<br />things hidden here.</h2>
+      <div class="top-label">
+        <span></span>
+        A VERY SERIOUS MATTER
+        <span></span>
+      </div>
 
-                                                                                                                                                                                              <p class="discovery-intro">
-                                                                                                                                                                                                      Take your time.<br />
-                                                                                                                                                                                                              Tap around and see what you find.
-                                                                                                                                                                                                                    </p>
+      <p class="intro-line">
+        Kabita...
+      </p>
 
-                                                                                                                                                                                                                          <div class="discovery-grid">
+      <h1 class="opening-title">
+        We need to<br>
+        talk.
+      </h1>
 
-                                                                                                                                                                                                                                  <button class="discovery-card" data-type="flower">
-                                                                                                                                                                                                                                            <span class="card-icon">✿</span>
-                                                                                                                                                                                                                                                      <span class="card-title">The Report</span>
-                                                                                                                                                                                                                                                                <span class="card-hint">tap me</span>
-                                                                                                                                                                                                                                                                        </button>
-
-                                                                                                                                                                                                                                                                                <button class="discovery-card" data-type="letter">
-                                                                                                                                                                                                                                                                                          <span class="card-icon">♡</span>
-                                                                                                                                                                                                                                                                                                    <span class="card-title">The Letter</span>
-                                                                                                                                                                                                                                                                                                              <span class="card-hint">tap me</span>
-                                                                                                                                                                                                                                                                                                                      </button>
-
-                                                                                                                                                                                                                                                                                                                              <button class="discovery-card" data-type="gift">
-                                                                                                                                                                                                                                                                                                                                        <span class="card-icon">◇</span>
-                                                                                                                                                                                                                                                                                                                                                  <span class="card-title">The Mystery</span>
-                                                                                                                                                                                                                                                                                                                                                            <span class="card-hint">tap me</span>
-                                                                                                                                                                                                                                                                                                                                                                    </button>
-
-                                                                                                                                                                                                                                                                                                                                                                          </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                <p id="progressText" class="progress-text">
-                                                                                                                                                                                                                                                                                                                                                                                        0 of 3 discovered
-                                                                                                                                                                                                                                                                                                                                                                                              </p>
-
-                                                                                                                                                                                                                                                                                                                                                                                                  </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                    </main>
+      <p class="opening-subtitle">
+        Don't worry.<br>
+        You're not in trouble.
+      </p>
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                      <!-- POPUP -->
-                                                                                                                                                                                                                                                                                                                                                                                                        <div id="modal" class="modal">
+      <!-- Envelope -->
+      <div class="envelope-area" id="envelope">
 
-                                                                                                                                                                                                                                                                                                                                                                                                            <div class="modal-backdrop"></div>
+        <div class="envelope-shadow"></div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                <div class="modal-box">
+        <div class="envelope">
 
-                                                                                                                                                                                                                                                                                                                                                                                                                      <button id="closeModal" class="close-btn">×</button>
+          <div class="envelope-back"></div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                            <p id="modalEyebrow" class="eyebrow"></p>
+          <div class="envelope-letter">
+            <div class="letter-small">
+              OFFICIAL NOTICE
+            </div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                  <div id="modalIcon" class="modal-icon"></div>
+            <div class="letter-name">
+              KABITA SHAH
+            </div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                        <h3 id="modalTitle"></h3>
+            <div class="letter-stamp">
+              ♡
+            </div>
+          </div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                              <div id="modalText" class="modal-text"></div>
+          <div class="envelope-front"></div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    <button id="modalContinue" class="secondary-btn">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            Close for now
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </button>
+          <div class="envelope-flap"></div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
+          <div class="seal">
+            ♡
+          </div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+        </div>
+
+      </div>
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <script src="script.js"></script>
+      <p class="tap-instruction">
+        <span class="finger">⌁</span>
+        Tap the envelope
+      </p>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </body>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </html>
+
+      <button id="enterBtn" class="enter-button">
+
+        <span class="button-shine"></span>
+
+        <span class="button-text">
+          Open the evidence
+        </span>
+
+        <span class="button-arrow">
+          →
+        </span>
+
+      </button>
+
+      <p class="tiny-warning">
+        P.S. There may be mild sibling allegations inside.
+      </p>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- ========================= -->
+  <!-- TRANSITION FLASH -->
+  <!-- ========================= -->
+
+  <div id="transitionFlash"></div>
+
+
+
+  <!-- ========================= -->
+  <!-- DISCOVERY -->
+  <!-- ========================= -->
+
+  <main id="discovery" class="screen">
+
+    <div class="discovery-wrap">
+
+      <div class="discovery-header">
+
+        <p class="eyebrow">
+          CASE FILE · RAKSHA BANDHAN
+        </p>
+
+        <h2>
+          So, Kabita...
+        </h2>
+
+        <p class="discovery-title">
+          You found the secret folder.
+        </p>
+
+        <p class="discovery-description">
+          There are three things inside.<br>
+          Unfortunately, all three are about you.
+        </p>
+
+      </div>
+
+
+      <!-- Cards -->
+
+      <div class="discovery-grid">
+
+        <button class="discovery-card card-report" data-type="flower">
+
+          <div class="card-number">
+            01
+          </div>
+
+          <div class="card-icon">
+            ✦
+          </div>
+
+          <div class="card-content">
+            <span class="card-kicker">
+              CONFIDENTIAL
+            </span>
+
+            <span class="card-title">
+              The Case File
+            </span>
+
+            <span class="card-description">
+              Evidence has been collected.
+            </span>
+          </div>
+
+          <span class="card-arrow">
+            ↗
+          </span>
+
+        </button>
+
+
+        <button class="discovery-card card-letter" data-type="letter">
+
+          <div class="card-number">
+            02
+          </div>
+
+          <div class="card-icon">
+            ♡
+          </div>
+
+          <div class="card-content">
+            <span class="card-kicker">
+              DO NOT LAUGH
+            </span>
+
+            <span class="card-title">
+              The Letter
+            </span>
+
+            <span class="card-description">
+              Okay fine... one emotional part.
+            </span>
+          </div>
+
+          <span class="card-arrow">
+            ↗
+          </span>
+
+        </button>
+
+
+        <button class="discovery-card card-mystery" data-type="gift">
+
+          <div class="card-number">
+            03
+          </div>
+
+          <div class="card-icon">
+            ◇
+          </div>
+
+          <div class="card-content">
+            <span class="card-kicker">
+              TOP SECRET
+            </span>
+
+            <span class="card-title">
+              The Mystery
+            </span>
+
+            <span class="card-description">
+              You weren't supposed to find this.
+            </span>
+          </div>
+
+          <span class="card-arrow">
+            ↗
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <div class="progress-area">
+
+        <div class="progress-line">
+          <div id="progressBar"></div>
+        </div>
+
+        <p id="progressText">
+          0 / 3 discovered
+        </p>
+
+      </div>
+
+
+      <p class="bottom-note">
+        Take your time. There's no prize for rushing.
+      </p>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- ========================= -->
+  <!-- MODAL -->
+  <!-- ========================= -->
+
+  <div id="modal" class="modal">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box">
+
+      <button id="closeModal" class="close-button">
+        ×
+      </button>
+
+      <div class="modal-top-line"></div>
+
+      <p id="modalEyebrow" class="modal-eyebrow"></p>
+
+      <div id="modalIcon" class="modal-icon"></div>
+
+      <h3 id="modalTitle"></h3>
+
+      <div id="modalText" class="modal-text"></div>
+
+      <button id="modalContinue" class="modal-button">
+        Close for now
+        <span>→</span>
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ========================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ========================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
