@@ -1,320 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <meta name="theme-color" content="#f7f1eb" />
-  <title>For Bro ♡</title>
-
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>Case File: Kabita Shah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Caveat:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- Ambient background -->
-  <div class="ambient">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+<div class="grain"></div>
+<div class="petals" id="petals"></div>
+
+<!-- ================= COVER SCREEN ================= -->
+<section id="cover" class="screen cover">
+  <div class="cover-stamp">CONFIDENTIAL</div>
+  <p class="cover-eyebrow">A little something for you.</p>
+  <h1 class="cover-name">KABITA SHAH</h1>
+  <p class="cover-sub">Made with love, patience... and a little bit of sibling mischief.</p>
+  <p class="cover-alias">( also known as: <span>Bro</span> )</p>
+  <button class="btn-enter" id="btnEnter">
+    <span>Enter the surprise</span>
+    <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M1 7H19M19 7L13 1M19 7L13 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <p class="cover-foot">Case No. 260826-KS &middot; Handle with care</p>
+</section>
+
+<!-- ================= DISCOVERY ROOM ================= -->
+<section id="discovery" class="screen discovery hidden">
+  <header class="section-head">
+    <p class="eyebrow">Restricted Access</p>
+    <h2>There are three little things hidden here.</h2>
+    <p class="lead">Take your time. Tap around and see what you find.</p>
+    <div class="progress">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <span id="progressLabel">0 / 3 files opened</span>
+    </div>
+  </header>
+
+  <div class="cards">
+    <button class="card" data-card="report">
+      <span class="card-tag">Exhibit I</span>
+      <span class="card-icon">📁</span>
+      <span class="card-title">The Case File</span>
+      <span class="card-desc">An official sibling investigation.</span>
+      <span class="card-check" aria-hidden="true">✓</span>
+    </button>
+
+    <button class="card" data-card="letter">
+      <span class="card-tag">Exhibit II</span>
+      <span class="card-icon">✉️</span>
+      <span class="card-title">The Letter</span>
+      <span class="card-desc">Some things are easier written.</span>
+      <span class="card-check" aria-hidden="true">✓</span>
+    </button>
+
+    <button class="card" data-card="mystery">
+      <span class="card-tag">Exhibit III</span>
+      <span class="card-icon">🔍</span>
+      <span class="card-title">The Mystery</span>
+      <span class="card-desc">You weren't supposed to find this yet.</span>
+      <span class="card-check" aria-hidden="true">✓</span>
+    </button>
   </div>
 
-  <!-- ================= OPENING ================= -->
-
-  <main id="opening" class="screen active">
-
-    <div class="opening-glow"></div>
-
-    <div class="opening-content">
-
-      <p class="eyebrow reveal">A LITTLE SOMETHING FOR YOU</p>
-
-      <div class="name-wrap">
-        <p class="case-number">CASE FILE • 2026</p>
-
-        <h1>Kabita</h1>
-
-        <div class="gold-line"></div>
-
-        <p class="surname">SHAH</p>
-
-        <div class="nickname">
-          <span>also known as</span>
-          <strong>"BRO"</strong>
-        </div>
-      </div>
-
-      <p class="opening-message">
-        Made with love, old memories...<br>
-        and a suspicious amount of sibling mischief.
-      </p>
-
-      <button id="enterBtn" class="primary-btn">
-        <span>Open your case file</span>
-        <span class="arrow">→</span>
-      </button>
-
-      <p class="tiny-note">
-        P.S. You are not allowed to skip anything. 😌
-      </p>
-
-    </div>
-
-  </main>
-
-
-  <!-- ================= DISCOVERY ================= -->
-
-  <main id="discovery" class="screen">
-
-    <div class="discovery-content">
-
-      <div class="profile-orbit">
-        <div class="orbit-ring"></div>
-        <img src="kabita-1.jpg" alt="Kabita" class="profile-photo">
-        <span class="profile-badge">BRO</span>
-      </div>
-
-      <p class="eyebrow">CASE FILE • RAKSHA BANDHAN</p>
-
-      <h2>
-        So, Kabita...
-      </h2>
-
-      <p class="discovery-subtitle">
-        You found the secret folder.
-      </p>
-
-      <p class="discovery-intro">
-        There are three things inside.<br>
-        Unfortunately, all three are about you.
-      </p>
-
-
-      <div class="discovery-grid">
-
-        <button class="discovery-card" data-type="report">
-          <span class="card-number">01</span>
-          <span class="card-icon">✦</span>
-
-          <span class="card-copy">
-            <small>CONFIDENTIAL</small>
-            <span class="card-title">The Case File</span>
-            <em>Evidence has been collected.</em>
-          </span>
-
-          <span class="card-arrow">↗</span>
-        </button>
-
-
-        <button class="discovery-card" data-type="letter">
-          <span class="card-number">02</span>
-          <span class="card-icon">♡</span>
-
-          <span class="card-copy">
-            <small>DO NOT LAUGH</small>
-            <span class="card-title">The Letter</span>
-            <em>Okay fine... one emotional part.</em>
-          </span>
-
-          <span class="card-arrow">↗</span>
-        </button>
-
-
-        <button class="discovery-card" data-type="mystery">
-          <span class="card-number">03</span>
-          <span class="card-icon">◇</span>
-
-          <span class="card-copy">
-            <small>TOP SECRET</small>
-            <span class="card-title">The Mystery</span>
-            <em>You weren't supposed to find this.</em>
-          </span>
-
-          <span class="card-arrow">↗</span>
-        </button>
-
-      </div>
-
-
-      <div class="progress-wrap">
-        <div class="progress-line"></div>
-        <p id="progressText">0 / 3 DISCOVERED</p>
-      </div>
-
-      <p class="bottom-note">
-        Take your time. There's no prize for rushing.
-      </p>
-
-    </div>
-
-  </main>
-
-
-  <!-- ================= MEMORY SECTION ================= -->
-
-  <section id="memories" class="extra-section">
-
-    <div class="section-inner">
-
-      <p class="eyebrow">EVIDENCE FROM THE ARCHIVES</p>
-
-      <h2>Some memories<br>made it out alive.</h2>
-
-      <p class="section-intro">
-        Before we continue, here's proof that we've actually
-        survived each other for this long. 😂
-      </p>
-
-
-      <div class="photo-stack">
-
-        <button class="memory-photo photo-one" data-image="kabita-1.jpg">
-          <img src="kabita-1.jpg" alt="A Raksha Bandhan memory">
-          <span>THE ORIGINAL EVIDENCE</span>
-        </button>
-
-        <button class="memory-photo photo-two" data-image="kabita-2.jpg">
-          <img src="kabita-2.jpg" alt="A memory with Kabita">
-          <span>PROOF WE GET ALONG</span>
-        </button>
-
-        <button class="memory-photo photo-three" data-image="kabita-3.jpg">
-          <img src="kabita-3.jpg" alt="A memory with Kabita">
-          <span>YEARS OF TOLERANCE</span>
-        </button>
-
-      </div>
-
-
-      <button id="continueBtn" class="primary-btn continue-btn">
-        There's one more thing →
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= FINAL RAKHI ================= -->
-
-  <section id="finalReveal" class="extra-section final-section">
-
-    <div class="section-inner">
-
-      <p class="eyebrow">ONE LAST THING, BRO</p>
-
-      <h2>
-        This one isn't<br>
-        for the case file.
-      </h2>
-
-      <p class="section-intro">
-        It's something I've wanted to say properly.
-      </p>
-
-
-      <button id="rakhiBtn" class="rakhi-button">
-
-        <div class="rakhi-glow"></div>
-
-        <div class="rakhi-thread"></div>
-
-        <div class="rakhi-center">
-          <span>✦</span>
-        </div>
-
-        <small>Tap the Rakhi</small>
-
-      </button>
-
-
-      <div id="rakhiMessage" class="rakhi-message">
-
-        <p class="eyebrow">PROMISE</p>
-
-        <h3>
-          No matter where life takes us...
-        </h3>
-
-        <p>
-          and no matter how far apart we are,
-          you'll always be my Bro.
-        </p>
-
-        <div class="final-wish">
-
-          <p>
-            I hope the future gives you everything
-            you've been working and dreaming for.
-          </p>
-
-          <strong>
-            And I hope you get to go abroad
-            very, very soon. ✈️
-          </strong>
-
-          <p>
-            You deserve a beautiful future.
-          </p>
-
-        </div>
-
-        <div class="signature">
-          Happy Raksha Bandhan, Bro ❤️
-          <br>
-          <span>— Your annoying brother</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= MODAL ================= -->
-
-  <div id="modal" class="modal">
-
-    <div class="modal-backdrop"></div>
-
-    <div class="modal-box">
-
-      <button id="closeModal" class="close-btn">×</button>
-
-      <p id="modalEyebrow" class="eyebrow"></p>
-
-      <div id="modalIcon" class="modal-icon"></div>
-
-      <h3 id="modalTitle"></h3>
-
-      <div id="modalText" class="modal-text"></div>
-
-      <button id="modalContinue" class="secondary-btn">
-        Close for now
-      </button>
-
-    </div>
-
+  <p class="scroll-hint" id="lockerHint">Open all three files to unlock the Evidence Locker ↓</p>
+</section>
+
+<!-- ================= EVIDENCE LOCKER (PHOTOS) ================= -->
+<section id="locker" class="screen locker hidden">
+  <header class="section-head">
+    <p class="eyebrow">Evidence Locker</p>
+    <h2>Exhibits attached to the case</h2>
+    <p class="lead">Three photographs. Zero cooperation from the suspect.</p>
+  </header>
+
+  <div class="locker-grid">
+    <figure class="polaroid" style="--r:-4deg">
+      <img src="images/IMG20251023152613.jpg" alt="Kabita and me, memory one" loading="lazy">
+      <figcaption><span class="poloroid-title">Exhibit A</span>The remote control wars. She never won fairly.</figcaption>
+    </figure>
+    <figure class="polaroid" style="--r:3deg">
+      <img src="images/IMG_20251203_081551.jpg" alt="Kabita and me, memory two" loading="lazy">
+      <figcaption><span class="poloroid-title">Exhibit B</span>She made the mess. I cleaned it. As always.</figcaption>
+    </figure>
+    <figure class="polaroid" style="--r:-2deg">
+      <img src="images/Messenger_creation_8A223DEF-6A47-4709-82B0-98736CA4927E.jpeg" alt="Kabita and me, memory three" loading="lazy">
+      <figcaption><span class="poloroid-title">Exhibit C</span>That one fortune teller who scared us both.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= RAKHI INTERACTION ================= -->
+<section id="rakhi" class="screen rakhi hidden">
+  <header class="section-head">
+    <p class="eyebrow">The Main Event</p>
+    <h2>One thread. One promise.</h2>
+    <p class="lead">Tap the rakhi.</p>
+  </header>
+
+  <div class="rakhi-stage">
+    <div class="wrist"></div>
+    <button class="rakhi-thread" id="rakhiBtn" aria-label="Tie the rakhi">
+      <svg viewBox="0 0 120 120" width="120" height="120">
+        <circle cx="60" cy="60" r="26" fill="var(--gold)" stroke="var(--wine)" stroke-width="3"/>
+        <circle cx="60" cy="60" r="10" fill="var(--wine)"/>
+        <g stroke="var(--wine)" stroke-width="2" fill="none">
+          <path d="M40 40 Q30 20 45 15"/>
+          <path d="M80 40 Q90 20 75 15"/>
+        </g>
+      </svg>
+    </button>
   </div>
 
-
-  <!-- ================= PHOTO VIEWER ================= -->
-
-  <div id="photoViewer" class="photo-viewer">
-
-    <button id="closePhoto" class="photo-close">×</button>
-
-    <img id="viewerImage" src="" alt="Memory">
-
+  <div class="rakhi-message hidden" id="rakhiMessage">
+    <p class="tie-line">tied.</p>
+    <p class="promise-text">This isn't just a thread. It's the same promise, tied twice a year, since we were kids &mdash; you dragging me to fortune tellers, me stealing the remote back, you always finding out my secrets before I even told anyone. Consider this one tied for good. I've got you. Always have.</p>
   </div>
+</section>
 
+<!-- ================= FINAL MESSAGE ================= -->
+<section id="final" class="screen final hidden">
+  <div class="final-seal">✦</div>
+  <p class="final-eyebrow">Case Closed</p>
+  <h2 class="final-line">No matter how old we get, you'll always be my sister.</h2>
+  <div class="final-body">
+    <p>You've spent years looking out for me &mdash; even standing between me and Mama's temper when I was too small to take it myself. You can't keep a secret to save your life, you make a mess and hand me the broom, and you'd still drop everything to check on me. That's just you. That's Bro.</p>
+    <p>You talk about going abroad like it's this far-off maybe. It's not a maybe. Go. Build the life you keep browsing for at 1am between shopping tabs. Wherever you land, you're taking a piece of home with you &mdash; and I'll be here bragging to everyone that my sister made it out and made it big.</p>
+    <p>Happy Raksha Bandhan, Bro. Here's to more remote-control wars, more fortune tellers who get it wrong, and a future that finally goes your way.</p>
+  </div>
+  <p class="final-signoff">From your annoying brother, always. ❤️</p>
 
-  <script src="script.js"></script>
+  <button class="secret-btn" id="secretBtn">Wait... there's one more thing.</button>
+  <div class="secret-reveal hidden" id="secretReveal">
+    <p>Fine. One more confession: I only ever "won" those remote fights because you'd get bored arguing and go check your phone. You were never actually beaten. Don't tell anyone I admitted that.</p>
+  </div>
+</section>
 
+<canvas id="confetti"></canvas>
+
+<script src="script.js"></script>
 </body>
 </html>
