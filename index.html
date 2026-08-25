@@ -1,121 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#f7f1eb" />
+  <title>For Bro ♡</title>
 
-  <meta name="theme-color" content="#f5eee7">
-  <title>For Kabita ♡</title>
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- Cinematic background -->
-  <div class="background">
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
-
-    <div class="particle p1"></div>
-    <div class="particle p2"></div>
-    <div class="particle p3"></div>
-    <div class="particle p4"></div>
-    <div class="particle p5"></div>
-
-    <div class="petal petal-one">✦</div>
-    <div class="petal petal-two">✧</div>
-    <div class="petal petal-three">✦</div>
+  <!-- Ambient background -->
+  <div class="ambient">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 
-
-  <!-- ========================= -->
-  <!-- OPENING -->
-  <!-- ========================= -->
+  <!-- ================= OPENING ================= -->
 
   <main id="opening" class="screen active">
 
-    <div class="opening-wrap">
+    <div class="opening-glow"></div>
 
-      <div class="top-label">
-        <span></span>
-        A VERY SERIOUS MATTER
-        <span></span>
-      </div>
+    <div class="opening-content">
 
-      <p class="intro-line">
-        Kabita...
-      </p>
+      <p class="eyebrow reveal">A LITTLE SOMETHING FOR YOU</p>
 
-      <h1 class="opening-title">
-        We need to<br>
-        talk.
-      </h1>
+      <div class="name-wrap">
+        <p class="case-number">CASE FILE • 2026</p>
 
-      <p class="opening-subtitle">
-        Don't worry.<br>
-        You're not in trouble.
-      </p>
+        <h1>Kabita</h1>
 
+        <div class="gold-line"></div>
 
-      <!-- Envelope -->
-      <div class="envelope-area" id="envelope">
+        <p class="surname">SHAH</p>
 
-        <div class="envelope-shadow"></div>
-
-        <div class="envelope">
-
-          <div class="envelope-back"></div>
-
-          <div class="envelope-letter">
-            <div class="letter-small">
-              OFFICIAL NOTICE
-            </div>
-
-            <div class="letter-name">
-              KABITA SHAH
-            </div>
-
-            <div class="letter-stamp">
-              ♡
-            </div>
-          </div>
-
-          <div class="envelope-front"></div>
-
-          <div class="envelope-flap"></div>
-
-          <div class="seal">
-            ♡
-          </div>
-
+        <div class="nickname">
+          <span>also known as</span>
+          <strong>"BRO"</strong>
         </div>
-
       </div>
 
-
-      <p class="tap-instruction">
-        <span class="finger">⌁</span>
-        Tap the envelope
+      <p class="opening-message">
+        Made with love, old memories...<br>
+        and a suspicious amount of sibling mischief.
       </p>
 
-
-      <button id="enterBtn" class="enter-button">
-
-        <span class="button-shine"></span>
-
-        <span class="button-text">
-          Open the evidence
-        </span>
-
-        <span class="button-arrow">
-          →
-        </span>
-
+      <button id="enterBtn" class="primary-btn">
+        <span>Open your case file</span>
+        <span class="arrow">→</span>
       </button>
 
-      <p class="tiny-warning">
-        P.S. There may be mild sibling allegations inside.
+      <p class="tiny-note">
+        P.S. You are not allowed to skip anything. 😌
       </p>
 
     </div>
@@ -123,156 +66,84 @@
   </main>
 
 
-
-  <!-- ========================= -->
-  <!-- TRANSITION FLASH -->
-  <!-- ========================= -->
-
-  <div id="transitionFlash"></div>
-
-
-
-  <!-- ========================= -->
-  <!-- DISCOVERY -->
-  <!-- ========================= -->
+  <!-- ================= DISCOVERY ================= -->
 
   <main id="discovery" class="screen">
 
-    <div class="discovery-wrap">
+    <div class="discovery-content">
 
-      <div class="discovery-header">
-
-        <p class="eyebrow">
-          CASE FILE · RAKSHA BANDHAN
-        </p>
-
-        <h2>
-          So, Kabita...
-        </h2>
-
-        <p class="discovery-title">
-          You found the secret folder.
-        </p>
-
-        <p class="discovery-description">
-          There are three things inside.<br>
-          Unfortunately, all three are about you.
-        </p>
-
+      <div class="profile-orbit">
+        <div class="orbit-ring"></div>
+        <img src="kabita-1.jpg" alt="Kabita" class="profile-photo">
+        <span class="profile-badge">BRO</span>
       </div>
 
+      <p class="eyebrow">CASE FILE • RAKSHA BANDHAN</p>
 
-      <!-- Cards -->
+      <h2>
+        So, Kabita...
+      </h2>
+
+      <p class="discovery-subtitle">
+        You found the secret folder.
+      </p>
+
+      <p class="discovery-intro">
+        There are three things inside.<br>
+        Unfortunately, all three are about you.
+      </p>
+
 
       <div class="discovery-grid">
 
-        <button class="discovery-card card-report" data-type="flower">
+        <button class="discovery-card" data-type="report">
+          <span class="card-number">01</span>
+          <span class="card-icon">✦</span>
 
-          <div class="card-number">
-            01
-          </div>
-
-          <div class="card-icon">
-            ✦
-          </div>
-
-          <div class="card-content">
-            <span class="card-kicker">
-              CONFIDENTIAL
-            </span>
-
-            <span class="card-title">
-              The Case File
-            </span>
-
-            <span class="card-description">
-              Evidence has been collected.
-            </span>
-          </div>
-
-          <span class="card-arrow">
-            ↗
+          <span class="card-copy">
+            <small>CONFIDENTIAL</small>
+            <span class="card-title">The Case File</span>
+            <em>Evidence has been collected.</em>
           </span>
 
+          <span class="card-arrow">↗</span>
         </button>
 
 
-        <button class="discovery-card card-letter" data-type="letter">
+        <button class="discovery-card" data-type="letter">
+          <span class="card-number">02</span>
+          <span class="card-icon">♡</span>
 
-          <div class="card-number">
-            02
-          </div>
-
-          <div class="card-icon">
-            ♡
-          </div>
-
-          <div class="card-content">
-            <span class="card-kicker">
-              DO NOT LAUGH
-            </span>
-
-            <span class="card-title">
-              The Letter
-            </span>
-
-            <span class="card-description">
-              Okay fine... one emotional part.
-            </span>
-          </div>
-
-          <span class="card-arrow">
-            ↗
+          <span class="card-copy">
+            <small>DO NOT LAUGH</small>
+            <span class="card-title">The Letter</span>
+            <em>Okay fine... one emotional part.</em>
           </span>
 
+          <span class="card-arrow">↗</span>
         </button>
 
 
-        <button class="discovery-card card-mystery" data-type="gift">
+        <button class="discovery-card" data-type="mystery">
+          <span class="card-number">03</span>
+          <span class="card-icon">◇</span>
 
-          <div class="card-number">
-            03
-          </div>
-
-          <div class="card-icon">
-            ◇
-          </div>
-
-          <div class="card-content">
-            <span class="card-kicker">
-              TOP SECRET
-            </span>
-
-            <span class="card-title">
-              The Mystery
-            </span>
-
-            <span class="card-description">
-              You weren't supposed to find this.
-            </span>
-          </div>
-
-          <span class="card-arrow">
-            ↗
+          <span class="card-copy">
+            <small>TOP SECRET</small>
+            <span class="card-title">The Mystery</span>
+            <em>You weren't supposed to find this.</em>
           </span>
 
+          <span class="card-arrow">↗</span>
         </button>
 
       </div>
 
 
-      <div class="progress-area">
-
-        <div class="progress-line">
-          <div id="progressBar"></div>
-        </div>
-
-        <p id="progressText">
-          0 / 3 discovered
-        </p>
-
+      <div class="progress-wrap">
+        <div class="progress-line"></div>
+        <p id="progressText">0 / 3 DISCOVERED</p>
       </div>
-
 
       <p class="bottom-note">
         Take your time. There's no prize for rushing.
@@ -283,10 +154,129 @@
   </main>
 
 
+  <!-- ================= MEMORY SECTION ================= -->
 
-  <!-- ========================= -->
-  <!-- MODAL -->
-  <!-- ========================= -->
+  <section id="memories" class="extra-section">
+
+    <div class="section-inner">
+
+      <p class="eyebrow">EVIDENCE FROM THE ARCHIVES</p>
+
+      <h2>Some memories<br>made it out alive.</h2>
+
+      <p class="section-intro">
+        Before we continue, here's proof that we've actually
+        survived each other for this long. 😂
+      </p>
+
+
+      <div class="photo-stack">
+
+        <button class="memory-photo photo-one" data-image="kabita-1.jpg">
+          <img src="kabita-1.jpg" alt="A Raksha Bandhan memory">
+          <span>THE ORIGINAL EVIDENCE</span>
+        </button>
+
+        <button class="memory-photo photo-two" data-image="kabita-2.jpg">
+          <img src="kabita-2.jpg" alt="A memory with Kabita">
+          <span>PROOF WE GET ALONG</span>
+        </button>
+
+        <button class="memory-photo photo-three" data-image="kabita-3.jpg">
+          <img src="kabita-3.jpg" alt="A memory with Kabita">
+          <span>YEARS OF TOLERANCE</span>
+        </button>
+
+      </div>
+
+
+      <button id="continueBtn" class="primary-btn continue-btn">
+        There's one more thing →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FINAL RAKHI ================= -->
+
+  <section id="finalReveal" class="extra-section final-section">
+
+    <div class="section-inner">
+
+      <p class="eyebrow">ONE LAST THING, BRO</p>
+
+      <h2>
+        This one isn't<br>
+        for the case file.
+      </h2>
+
+      <p class="section-intro">
+        It's something I've wanted to say properly.
+      </p>
+
+
+      <button id="rakhiBtn" class="rakhi-button">
+
+        <div class="rakhi-glow"></div>
+
+        <div class="rakhi-thread"></div>
+
+        <div class="rakhi-center">
+          <span>✦</span>
+        </div>
+
+        <small>Tap the Rakhi</small>
+
+      </button>
+
+
+      <div id="rakhiMessage" class="rakhi-message">
+
+        <p class="eyebrow">PROMISE</p>
+
+        <h3>
+          No matter where life takes us...
+        </h3>
+
+        <p>
+          and no matter how far apart we are,
+          you'll always be my Bro.
+        </p>
+
+        <div class="final-wish">
+
+          <p>
+            I hope the future gives you everything
+            you've been working and dreaming for.
+          </p>
+
+          <strong>
+            And I hope you get to go abroad
+            very, very soon. ✈️
+          </strong>
+
+          <p>
+            You deserve a beautiful future.
+          </p>
+
+        </div>
+
+        <div class="signature">
+          Happy Raksha Bandhan, Bro ❤️
+          <br>
+          <span>— Your annoying brother</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= MODAL ================= -->
 
   <div id="modal" class="modal">
 
@@ -294,13 +284,9 @@
 
     <div class="modal-box">
 
-      <button id="closeModal" class="close-button">
-        ×
-      </button>
+      <button id="closeModal" class="close-btn">×</button>
 
-      <div class="modal-top-line"></div>
-
-      <p id="modalEyebrow" class="modal-eyebrow"></p>
+      <p id="modalEyebrow" class="eyebrow"></p>
 
       <div id="modalIcon" class="modal-icon"></div>
 
@@ -308,9 +294,8 @@
 
       <div id="modalText" class="modal-text"></div>
 
-      <button id="modalContinue" class="modal-button">
+      <button id="modalContinue" class="secondary-btn">
         Close for now
-        <span>→</span>
       </button>
 
     </div>
@@ -318,10 +303,16 @@
   </div>
 
 
+  <!-- ================= PHOTO VIEWER ================= -->
 
-  <!-- ========================= -->
-  <!-- JAVASCRIPT -->
-  <!-- ========================= -->
+  <div id="photoViewer" class="photo-viewer">
+
+    <button id="closePhoto" class="photo-close">×</button>
+
+    <img id="viewerImage" src="" alt="Memory">
+
+  </div>
+
 
   <script src="script.js"></script>
 
