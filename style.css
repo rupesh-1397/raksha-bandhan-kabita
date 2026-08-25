@@ -1,435 +1,1333 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
 
 :root {
-  --ivory: #f8f3ed;
-    --paper: #fffaf5;
-      --wine: #6b283b;
-        --wine-dark: #431b29;
-          --rose: #b97982;
-            --gold: #b79258;
-              --text: #30272a;
-                --muted: #857477;
-                }
+  --ivory: #f7f0e9;
+  --paper: #fffaf5;
+  --wine: #672638;
+  --wine-dark: #3d1825;
+  --rose: #b97882;
+  --gold: #b9965e;
+  --gold-light: #d8bd88;
+  --text: #30272a;
+  --muted: #817579;
+}
 
-                * {
-                  box-sizing: border-box;
-                    margin: 0;
-                      padding: 0;
-                      }
 
-                      html,
-                      body {
-                        width: 100%;
-                          min-height: 100%;
-                          }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-                          body {
-                            background: var(--ivory);
-                              color: var(--text);
-                                font-family: "DM Sans", sans-serif;
-                                  overflow-x: hidden;
-                                  }
 
-                                  button {
-                                    font: inherit;
-                                    }
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
 
-                                    .screen {
-                                      position: fixed;
-                                        inset: 0;
-                                          min-height: 100dvh;
-                                            display: flex;
-                                              align-items: center;
-                                                justify-content: center;
-                                                  padding: 28px;
-                                                    opacity: 0;
-                                                      visibility: hidden;
-                                                        transform: translateY(18px);
-                                                          transition:
-                                                              opacity 0.8s ease,
-                                                                  transform 0.8s ease,
-                                                                      visibility 0.8s;
-                                                                      }
 
-                                                                      .screen.active {
-                                                                        opacity: 1;
-                                                                          visibility: visible;
-                                                                            transform: translateY(0);
-                                                                            }
+body {
+  background: var(--ivory);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
 
-                                                                            /* -------------------- */
-                                                                            /* AMBIENT BACKGROUND */
-                                                                            /* -------------------- */
 
-                                                                            .ambient {
-                                                                              position: fixed;
-                                                                                inset: 0;
-                                                                                  pointer-events: none;
-                                                                                    overflow: hidden;
-                                                                                      z-index: 0;
-                                                                                      }
+/* =========================
+   BACKGROUND
+========================= */
 
-                                                                                      .ambient span {
-                                                                                        position: absolute;
-                                                                                          width: 6px;
-                                                                                            height: 6px;
-                                                                                              border: 1px solid rgba(183, 146, 88, 0.45);
-                                                                                                border-radius: 50%;
-                                                                                                  animation: float 9s infinite ease-in-out;
-                                                                                                  }
+.background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
 
-                                                                                                  .ambient span:nth-child(1) {
-                                                                                                    left: 12%;
-                                                                                                      top: 20%;
-                                                                                                      }
 
-                                                                                                      .ambient span:nth-child(2) {
-                                                                                                        left: 82%;
-                                                                                                          top: 16%;
-                                                                                                            width: 4px;
-                                                                                                              height: 4px;
-                                                                                                                animation-delay: 2s;
-                                                                                                                }
+.glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .18;
+}
 
-                                                                                                                .ambient span:nth-child(3) {
-                                                                                                                  left: 76%;
-                                                                                                                    top: 72%;
-                                                                                                                      animation-delay: 4s;
-                                                                                                                      }
 
-                                                                                                                      .ambient span:nth-child(4) {
-                                                                                                                        left: 18%;
-                                                                                                                          top: 80%;
-                                                                                                                            width: 4px;
-                                                                                                                              height: 4px;
-                                                                                                                                animation-delay: 1s;
-                                                                                                                                }
+.glow-one {
+  background: #d7a7ad;
+  top: -130px;
+  left: -100px;
+}
 
-                                                                                                                                .ambient span:nth-child(5) {
-                                                                                                                                  left: 48%;
-                                                                                                                                    top: 12%;
-                                                                                                                                      width: 3px;
-                                                                                                                                        height: 3px;
-                                                                                                                                          animation-delay: 3s;
-                                                                                                                                          }
 
-                                                                                                                                          @keyframes float {
-                                                                                                                                            0%, 100% {
-                                                                                                                                                transform: translateY(0) scale(1);
-                                                                                                                                                    opacity: 0.25;
-                                                                                                                                                      }
+.glow-two {
+  background: #d6bd8d;
+  bottom: -150px;
+  right: -100px;
+}
 
-                                                                                                                                                        50% {
-                                                                                                                                                            transform: translateY(-22px) scale(1.3);
-                                                                                                                                                                opacity: 0.8;
-                                                                                                                                                                  }
-                                                                                                                                                                  }
 
-                                                                                                                                                                  /* -------------------- */
-                                                                                                                                                                  /* OPENING */
-                                                                                                                                                                  /* -------------------- */
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(183,150,94,.45);
+  border-radius: 50%;
+  animation: particleFloat 8s ease-in-out infinite;
+}
 
-                                                                                                                                                                  .opening-content {
-                                                                                                                                                                    position: relative;
-                                                                                                                                                                      z-index: 1;
-                                                                                                                                                                        width: min(100%, 440px);
-                                                                                                                                                                          text-align: center;
-                                                                                                                                                                          }
 
-                                                                                                                                                                          .eyebrow {
-                                                                                                                                                                            color: var(--gold);
-                                                                                                                                                                              font-size: 10px;
-                                                                                                                                                                                font-weight: 600;
-                                                                                                                                                                                  letter-spacing: 3px;
-                                                                                                                                                                                    text-transform: uppercase;
-                                                                                                                                                                                    }
+.p1 {
+  left: 13%;
+  top: 22%;
+}
 
-                                                                                                                                                                                    .name-wrap {
-                                                                                                                                                                                      margin: 34px 0 24px;
-                                                                                                                                                                                      }
 
-                                                                                                                                                                                      .name-wrap h1 {
-                                                                                                                                                                                        color: var(--wine);
-                                                                                                                                                                                          font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                            font-size: clamp(76px, 23vw, 112px);
-                                                                                                                                                                                              font-weight: 500;
-                                                                                                                                                                                                line-height: 0.8;
-                                                                                                                                                                                                  letter-spacing: -3px;
-                                                                                                                                                                                                  }
+.p2 {
+  left: 82%;
+  top: 18%;
+  width: 4px;
+  height: 4px;
+  animation-delay: 1s;
+}
 
-                                                                                                                                                                                                  .gold-line {
-                                                                                                                                                                                                    width: 48px;
-                                                                                                                                                                                                      height: 1px;
-                                                                                                                                                                                                        background: var(--gold);
-                                                                                                                                                                                                          margin: 20px auto 10px;
-                                                                                                                                                                                                          }
 
-                                                                                                                                                                                                          .surname {
-                                                                                                                                                                                                            color: var(--wine-dark);
-                                                                                                                                                                                                              font-size: 11px;
-                                                                                                                                                                                                                font-weight: 600;
-                                                                                                                                                                                                                  letter-spacing: 7px;
-                                                                                                                                                                                                                    margin-left: 7px;
-                                                                                                                                                                                                                    }
+.p3 {
+  left: 77%;
+  top: 72%;
+  animation-delay: 3s;
+}
 
-                                                                                                                                                                                                                    .opening-message {
-                                                                                                                                                                                                                      color: var(--muted);
-                                                                                                                                                                                                                        font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                                                          font-size: 20px;
-                                                                                                                                                                                                                            line-height: 1.45;
-                                                                                                                                                                                                                              margin: 0 auto 36px;
-                                                                                                                                                                                                                              }
 
-                                                                                                                                                                                                                              .primary-btn,
-                                                                                                                                                                                                                              .secondary-btn {
-                                                                                                                                                                                                                                border: 0;
-                                                                                                                                                                                                                                  cursor: pointer;
-                                                                                                                                                                                                                                    transition:
-                                                                                                                                                                                                                                        transform 0.25s ease,
-                                                                                                                                                                                                                                            box-shadow 0.25s ease;
-                                                                                                                                                                                                                                            }
+.p4 {
+  left: 18%;
+  top: 78%;
+  width: 4px;
+  height: 4px;
+  animation-delay: 2s;
+}
 
-                                                                                                                                                                                                                                            .primary-btn {
-                                                                                                                                                                                                                                              display: inline-flex;
-                                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                                                  gap: 22px;
-                                                                                                                                                                                                                                                    padding: 15px 21px 15px 24px;
-                                                                                                                                                                                                                                                      border-radius: 100px;
-                                                                                                                                                                                                                                                        background: var(--wine);
-                                                                                                                                                                                                                                                          color: white;
-                                                                                                                                                                                                                                                            box-shadow: 0 12px 30px rgba(107, 40, 59, 0.18);
-                                                                                                                                                                                                                                                            }
 
-                                                                                                                                                                                                                                                            .primary-btn:hover,
-                                                                                                                                                                                                                                                            .primary-btn:active {
-                                                                                                                                                                                                                                                              transform: translateY(-2px);
-                                                                                                                                                                                                                                                                box-shadow: 0 16px 35px rgba(107, 40, 59, 0.25);
-                                                                                                                                                                                                                                                                }
+.p5 {
+  left: 50%;
+  top: 10%;
+  width: 3px;
+  height: 3px;
+  animation-delay: 4s;
+}
 
-                                                                                                                                                                                                                                                                .arrow {
-                                                                                                                                                                                                                                                                  font-size: 18px;
-                                                                                                                                                                                                                                                                  }
 
-                                                                                                                                                                                                                                                                  .tiny-note {
-                                                                                                                                                                                                                                                                    color: #a69798;
-                                                                                                                                                                                                                                                                      font-size: 10px;
-                                                                                                                                                                                                                                                                        margin-top: 18px;
-                                                                                                                                                                                                                                                                        }
+@keyframes particleFloat {
 
-                                                                                                                                                                                                                                                                        /* -------------------- */
-                                                                                                                                                                                                                                                                        /* DISCOVERY */
-                                                                                                                                                                                                                                                                        /* -------------------- */
+  0%,100% {
+    transform: translateY(0) scale(.8);
+    opacity: .15;
+  }
 
-                                                                                                                                                                                                                                                                        .discovery-content {
-                                                                                                                                                                                                                                                                          position: relative;
-                                                                                                                                                                                                                                                                            z-index: 1;
-                                                                                                                                                                                                                                                                              width: min(100%, 460px);
-                                                                                                                                                                                                                                                                                text-align: center;
-                                                                                                                                                                                                                                                                                }
+  50% {
+    transform: translateY(-28px) scale(1.5);
+    opacity: .75;
+  }
+}
 
-                                                                                                                                                                                                                                                                                .discovery-content h2 {
-                                                                                                                                                                                                                                                                                  color: var(--wine-dark);
-                                                                                                                                                                                                                                                                                    font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                                                                                                                      font-size: 38px;
-                                                                                                                                                                                                                                                                                        font-weight: 500;
-                                                                                                                                                                                                                                                                                          line-height: 0.98;
-                                                                                                                                                                                                                                                                                            margin-top: 18px;
-                                                                                                                                                                                                                                                                                            }
 
-                                                                                                                                                                                                                                                                                            .discovery-intro {
-                                                                                                                                                                                                                                                                                              color: var(--muted);
-                                                                                                                                                                                                                                                                                                font-size: 13px;
-                                                                                                                                                                                                                                                                                                  line-height: 1.6;
-                                                                                                                                                                                                                                                                                                    margin-top: 17px;
-                                                                                                                                                                                                                                                                                                    }
+.petal {
+  position: absolute;
+  color: var(--gold);
+  opacity: .22;
+  font-size: 22px;
+  animation: petalFloat 12s ease-in-out infinite;
+}
 
-                                                                                                                                                                                                                                                                                                    .discovery-grid {
-                                                                                                                                                                                                                                                                                                      display: grid;
-                                                                                                                                                                                                                                                                                                        grid-template-columns: repeat(3, 1fr);
-                                                                                                                                                                                                                                                                                                          gap: 10px;
-                                                                                                                                                                                                                                                                                                            margin-top: 35px;
-                                                                                                                                                                                                                                                                                                            }
 
-                                                                                                                                                                                                                                                                                                            .discovery-card {
-                                                                                                                                                                                                                                                                                                              min-height: 155px;
-                                                                                                                                                                                                                                                                                                                border: 1px solid rgba(107, 40, 59, 0.1);
-                                                                                                                                                                                                                                                                                                                  border-radius: 18px;
-                                                                                                                                                                                                                                                                                                                    background: rgba(255, 250, 245, 0.7);
-                                                                                                                                                                                                                                                                                                                      color: var(--wine-dark);
-                                                                                                                                                                                                                                                                                                                        display: flex;
-                                                                                                                                                                                                                                                                                                                          flex-direction: column;
-                                                                                                                                                                                                                                                                                                                            align-items: center;
-                                                                                                                                                                                                                                                                                                                              justify-content: center;
-                                                                                                                                                                                                                                                                                                                                gap: 8px;
-                                                                                                                                                                                                                                                                                                                                  cursor: pointer;
-                                                                                                                                                                                                                                                                                                                                    box-shadow: 0 8px 25px rgba(67, 27, 41, 0.04);
-                                                                                                                                                                                                                                                                                                                                      transition:
-                                                                                                                                                                                                                                                                                                                                          transform 0.3s ease,
-                                                                                                                                                                                                                                                                                                                                              background 0.3s ease,
-                                                                                                                                                                                                                                                                                                                                                  box-shadow 0.3s ease;
-                                                                                                                                                                                                                                                                                                                                                  }
+.petal-one {
+  left: 8%;
+  top: 60%;
+}
 
-                                                                                                                                                                                                                                                                                                                                                  .discovery-card:active {
-                                                                                                                                                                                                                                                                                                                                                    transform: scale(0.96);
-                                                                                                                                                                                                                                                                                                                                                    }
 
-                                                                                                                                                                                                                                                                                                                                                    .discovery-card:hover {
-                                                                                                                                                                                                                                                                                                                                                      transform: translateY(-5px);
-                                                                                                                                                                                                                                                                                                                                                        background: var(--paper);
-                                                                                                                                                                                                                                                                                                                                                          box-shadow: 0 15px 35px rgba(67, 27, 41, 0.08);
-                                                                                                                                                                                                                                                                                                                                                          }
+.petal-two {
+  right: 9%;
+  top: 35%;
+  animation-delay: 3s;
+}
 
-                                                                                                                                                                                                                                                                                                                                                          .card-icon {
-                                                                                                                                                                                                                                                                                                                                                            font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                                                                                                                                                                                              color: var(--gold);
-                                                                                                                                                                                                                                                                                                                                                                font-size: 36px;
-                                                                                                                                                                                                                                                                                                                                                                  line-height: 1;
-                                                                                                                                                                                                                                                                                                                                                                  }
 
-                                                                                                                                                                                                                                                                                                                                                                  .card-title {
-                                                                                                                                                                                                                                                                                                                                                                    font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                                                                                                                                                                                                      font-size: 19px;
-                                                                                                                                                                                                                                                                                                                                                                      }
+.petal-three {
+  right: 22%;
+  bottom: 12%;
+  animation-delay: 6s;
+}
 
-                                                                                                                                                                                                                                                                                                                                                                      .card-hint {
-                                                                                                                                                                                                                                                                                                                                                                        color: #a69798;
-                                                                                                                                                                                                                                                                                                                                                                          font-size: 9px;
-                                                                                                                                                                                                                                                                                                                                                                            letter-spacing: 1.5px;
-                                                                                                                                                                                                                                                                                                                                                                              text-transform: uppercase;
-                                                                                                                                                                                                                                                                                                                                                                              }
 
-                                                                                                                                                                                                                                                                                                                                                                              .discovery-card.discovered {
-                                                                                                                                                                                                                                                                                                                                                                                border-color: rgba(183, 146, 88, 0.5);
-                                                                                                                                                                                                                                                                                                                                                                                  background: #fffaf5;
-                                                                                                                                                                                                                                                                                                                                                                                  }
+@keyframes petalFloat {
 
-                                                                                                                                                                                                                                                                                                                                                                                  .discovery-card.discovered .card-hint {
-                                                                                                                                                                                                                                                                                                                                                                                    color: var(--gold);
-                                                                                                                                                                                                                                                                                                                                                                                    }
+  0%,100% {
+    transform: translateY(0) rotate(0deg);
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                                    .progress-text {
-                                                                                                                                                                                                                                                                                                                                                                                      color: #a69798;
-                                                                                                                                                                                                                                                                                                                                                                                        font-size: 10px;
-                                                                                                                                                                                                                                                                                                                                                                                          letter-spacing: 1px;
-                                                                                                                                                                                                                                                                                                                                                                                            margin-top: 25px;
-                                                                                                                                                                                                                                                                                                                                                                                              text-transform: uppercase;
-                                                                                                                                                                                                                                                                                                                                                                                              }
+  50% {
+    transform: translateY(-35px) rotate(90deg);
+  }
+}
 
-                                                                                                                                                                                                                                                                                                                                                                                              /* -------------------- */
-                                                                                                                                                                                                                                                                                                                                                                                              /* MODAL */
-                                                                                                                                                                                                                                                                                                                                                                                              /* -------------------- */
 
-                                                                                                                                                                                                                                                                                                                                                                                              .modal {
-                                                                                                                                                                                                                                                                                                                                                                                                position: fixed;
-                                                                                                                                                                                                                                                                                                                                                                                                  inset: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                    z-index: 20;
-                                                                                                                                                                                                                                                                                                                                                                                                      display: flex;
-                                                                                                                                                                                                                                                                                                                                                                                                        align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                          justify-content: center;
-                                                                                                                                                                                                                                                                                                                                                                                                            padding: 24px;
-                                                                                                                                                                                                                                                                                                                                                                                                              opacity: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                visibility: hidden;
-                                                                                                                                                                                                                                                                                                                                                                                                                  transition: opacity 0.35s ease, visibility 0.35s;
-                                                                                                                                                                                                                                                                                                                                                                                                                  }
+/* =========================
+   SCREENS
+========================= */
 
-                                                                                                                                                                                                                                                                                                                                                                                                                  .modal.open {
-                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
-                                                                                                                                                                                                                                                                                                                                                                                                                      visibility: visible;
-                                                                                                                                                                                                                                                                                                                                                                                                                      }
+.screen {
+  position: fixed;
+  inset: 0;
+  min-height: 100dvh;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                      .modal-backdrop {
-                                                                                                                                                                                                                                                                                                                                                                                                                        position: absolute;
-                                                                                                                                                                                                                                                                                                                                                                                                                          inset: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                            background: rgba(48, 39, 42, 0.42);
-                                                                                                                                                                                                                                                                                                                                                                                                                              backdrop-filter: blur(8px);
-                                                                                                                                                                                                                                                                                                                                                                                                                              }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                              .modal-box {
-                                                                                                                                                                                                                                                                                                                                                                                                                                position: relative;
-                                                                                                                                                                                                                                                                                                                                                                                                                                  z-index: 1;
-                                                                                                                                                                                                                                                                                                                                                                                                                                    width: min(100%, 390px);
-                                                                                                                                                                                                                                                                                                                                                                                                                                      padding: 38px 27px 27px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                        border-radius: 25px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                          background: var(--paper);
-                                                                                                                                                                                                                                                                                                                                                                                                                                            text-align: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                              box-shadow: 0 30px 80px rgba(48, 39, 42, 0.2);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                transform: translateY(15px) scale(0.97);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  transition: transform 0.4s ease;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
+  padding: 24px;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  .modal.open .modal-box {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: translateY(0) scale(1);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+  opacity: 0;
+  visibility: hidden;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    .close-btn {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      position: absolute;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        right: 17px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                          top: 13px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            width: 32px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                              height: 32px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                border: 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  background: transparent;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    color: #a69798;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                      font-size: 25px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        cursor: pointer;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+  transform: scale(1.035);
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .modal-icon {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                          color: var(--gold);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                              font-size: 48px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                margin: 18px 0 5px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+  transition:
+    opacity .8s cubic-bezier(.22,1,.36,1),
+    transform .9s cubic-bezier(.22,1,.36,1),
+    visibility .9s;
+}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .modal-box h3 {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  color: var(--wine);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      font-size: 34px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        font-weight: 500;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .modal-text {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          color: var(--muted);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            font-family: "Cormorant Garamond", serif;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              font-size: 19px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                line-height: 1.5;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  margin: 15px 0 25px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  .secondary-btn {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding: 12px 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      border-radius: 100px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        background: transparent;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          border: 1px solid rgba(107, 40, 59, 0.2);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            color: var(--wine);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            .secondary-btn:active {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              transform: scale(0.97);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              }
+/* =========================
+   OPENING
+========================= */
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* -------------------- */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* SMALL PHONES */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* -------------------- */
+.opening-wrap {
+  position: relative;
+  z-index: 2;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @media (max-width: 360px) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .screen {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding: 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+  width: min(100%, 430px);
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .discovery-grid {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            gap: 7px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              }
+  text-align: center;
+}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .discovery-card {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    min-height: 140px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .card-title {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            font-size: 17px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              }
+.top-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .discovery-content h2 {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    font-size: 34px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+  color: var(--gold);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+
+.top-label span {
+  width: 24px;
+  height: 1px;
+  background: var(--gold-light);
+  opacity: .7;
+}
+
+
+.intro-line {
+  margin-top: 28px;
+
+  color: var(--wine);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+
+  opacity: 0;
+
+  animation: fadeUp .8s .25s forwards;
+}
+
+
+.opening-title {
+  margin-top: 2px;
+
+  color: var(--wine-dark);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(62px, 18vw, 90px);
+  line-height: .78;
+  font-weight: 500;
+
+  letter-spacing: -3px;
+
+  opacity: 0;
+
+  animation: titleReveal 1.1s .45s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+
+@keyframes titleReveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.94);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+
+.opening-subtitle {
+  margin-top: 25px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.8;
+
+  opacity: 0;
+
+  animation: fadeUp .8s .8s forwards;
+}
+
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope-area {
+  position: relative;
+
+  width: 210px;
+  height: 150px;
+
+  margin: 27px auto 12px;
+
+  cursor: pointer;
+
+  perspective: 1000px;
+
+  opacity: 0;
+
+  animation:
+    envelopeEntrance 1s 1s cubic-bezier(.22,1,.36,1) forwards,
+    envelopeFloat 4s 2s ease-in-out infinite;
+}
+
+
+@keyframes envelopeEntrance {
+
+  from {
+    opacity: 0;
+    transform: translateY(45px) scale(.75) rotateX(12deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0);
+  }
+}
+
+
+@keyframes envelopeFloat {
+
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+.envelope-shadow {
+  position: absolute;
+
+  width: 160px;
+  height: 22px;
+
+  bottom: -12px;
+  left: 25px;
+
+  background: rgba(70,35,43,.17);
+
+  border-radius: 50%;
+
+  filter: blur(9px);
+}
+
+
+.envelope {
+  position: relative;
+
+  width: 210px;
+  height: 140px;
+
+  transform-style: preserve-3d;
+
+  filter: drop-shadow(0 18px 25px rgba(75,42,48,.12));
+
+  transition: transform .5s cubic-bezier(.22,1,.36,1);
+}
+
+
+.envelope-area:active .envelope {
+  transform: scale(.95) rotateX(4deg);
+}
+
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+
+  background: #ead7ca;
+
+  border-radius: 5px;
+
+  border: 1px solid rgba(103,38,56,.14);
+}
+
+
+.envelope-letter {
+  position: absolute;
+
+  left: 18px;
+  right: 18px;
+
+  top: -4px;
+
+  height: 105px;
+
+  background: var(--paper);
+
+  border-radius: 3px;
+
+  padding: 18px;
+
+  text-align: left;
+
+  box-shadow: 0 3px 12px rgba(60,30,35,.08);
+
+  transition: transform .7s cubic-bezier(.22,1,.36,1);
+}
+
+
+.letter-small {
+  color: var(--gold);
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.letter-name {
+  margin-top: 10px;
+
+  color: var(--wine);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 19px;
+}
+
+
+.letter-stamp {
+  position: absolute;
+
+  right: 15px;
+  bottom: 12px;
+
+  color: var(--rose);
+
+  font-size: 18px;
+}
+
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+
+  background: #e5cbbd;
+
+  clip-path: polygon(0 0, 50% 57%, 100% 0, 100% 100%, 0 100%);
+
+  border-radius: 5px;
+}
+
+
+.envelope-flap {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 74px;
+
+  background: #ecd9cc;
+
+  clip-path: polygon(0 0, 100% 0, 50% 75%);
+
+  transform-origin: top center;
+
+  transition:
+    transform .85s cubic-bezier(.22,1,.36,1),
+    z-index .1s;
+
+  z-index: 5;
+}
+
+
+.seal {
+  position: absolute;
+
+  z-index: 8;
+
+  left: 50%;
+  top: 48px;
+
+  width: 31px;
+  height: 31px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--wine);
+
+  color: #f8e9dc;
+
+  font-size: 14px;
+
+  box-shadow:
+    0 4px 10px rgba(70,25,40,.18),
+    0 0 0 4px rgba(183,150,94,.12);
+
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .3s;
+}
+
+
+/* OPENED ENVELOPE */
+
+.envelope-area.opening .envelope {
+  animation: envelopeOpen .9s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+
+.envelope-area.opening .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+
+.envelope-area.opening .envelope-letter {
+  transform: translateY(-50px);
+}
+
+
+.envelope-area.opening .seal {
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+}
+
+
+@keyframes envelopeOpen {
+
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1.03);
+  }
+}
+
+
+.tap-instruction {
+  color: var(--muted);
+
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  animation: fadeUp .8s 1.45s forwards;
+}
+
+
+.finger {
+  display: inline-block;
+
+  margin-right: 5px;
+
+  color: var(--gold);
+
+  animation: fingerPulse 1.8s infinite;
+}
+
+
+@keyframes fingerPulse {
+
+  0%,100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.enter-button {
+  position: relative;
+
+  width: min(100%, 285px);
+  height: 57px;
+
+  margin-top: 17px;
+
+  border: none;
+  border-radius: 100px;
+
+  background: var(--wine);
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 25px rgba(103,38,56,.18);
+
+  opacity: 0;
+
+  animation: fadeUp .8s 1.7s forwards;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.enter-button:active {
+  transform: scale(.94);
+
+  box-shadow:
+    0 5px 12px rgba(103,38,56,.15);
+}
+
+
+.button-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+
+.button-arrow {
+  font-size: 20px;
+
+  transition: transform .3s ease;
+}
+
+
+.enter-button:hover .button-arrow {
+  transform: translateX(5px);
+}
+
+
+.button-shine {
+  position: absolute;
+
+  top: 0;
+  left: -100px;
+
+  width: 60px;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.25),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  animation: shine 3.5s 2.2s infinite;
+}
+
+
+@keyframes shine {
+
+  0%,55% {
+    left: -100px;
+  }
+
+  75%,100% {
+    left: 110%;
+  }
+}
+
+
+.tiny-warning {
+  margin-top: 14px;
+
+  color: #9b8c8e;
+
+  font-size: 9px;
+  letter-spacing: .3px;
+
+  opacity: 0;
+
+  animation: fadeUp .8s 1.9s forwards;
+}
+
+
+/* =========================
+   TRANSITION
+========================= */
+
+#transitionFlash {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100;
+
+  background: var(--paper);
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform: scale(.85);
+}
+
+
+#transitionFlash.active {
+  animation: cinematicFlash 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+
+@keyframes cinematicFlash {
+
+  0% {
+    opacity: 0;
+    transform: scale(.85);
+  }
+
+  35% {
+    opacity: .85;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+
+/* =========================
+   DISCOVERY
+========================= */
+
+.discovery-wrap {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(100%, 470px);
+
+  padding: 20px 0;
+}
+
+
+.discovery-header {
+  text-align: center;
+}
+
+
+.eyebrow {
+  color: var(--gold);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+}
+
+
+.discovery-header h2 {
+  margin-top: 13px;
+
+  color: var(--wine-dark);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 42px;
+  line-height: .9;
+  font-weight: 500;
+}
+
+
+.discovery-title {
+  margin-top: 8px;
+
+  color: var(--wine);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 26px;
+}
+
+
+.discovery-description {
+  margin-top: 11px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.discovery-grid {
+  display: grid;
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+
+.discovery-card {
+  position: relative;
+
+  width: 100%;
+  min-height: 112px;
+
+  padding: 18px 18px 18px 20px;
+
+  border: 1px solid rgba(183,150,94,.38);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,250,245,.98),
+      rgba(250,240,231,.92)
+    );
+
+  color: var(--text);
+
+  text-align: left;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px rgba(70,40,45,.06);
+
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+
+.discovery-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  right: -50px;
+  top: -50px;
+
+  background: rgba(183,150,94,.08);
+
+  transition: transform .5s ease;
+}
+
+
+.discovery-card:active {
+  transform: scale(.96);
+}
+
+
+.discovery-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(183,150,94,.65);
+
+  box-shadow:
+    0 18px 35px rgba(70,40,45,.1);
+}
+
+
+.discovery-card:hover::before {
+  transform: scale(1.5);
+}
+
+
+.card-number {
+  position: absolute;
+
+  top: 13px;
+  right: 17px;
+
+  color: rgba(103,38,56,.28);
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+.card-icon {
+  width: 51px;
+  height: 51px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(183,150,94,.1);
+
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 26px;
+
+  transition:
+    transform .4s ease,
+    background .4s ease;
+}
+
+
+.discovery-card:hover .card-icon {
+  transform: rotate(8deg) scale(1.08);
+
+  background: rgba(183,150,94,.17);
+}
+
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 15px;
+}
+
+
+.card-kicker {
+  color: var(--gold);
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+}
+
+
+.card-title {
+  margin-top: 3px;
+
+  color: var(--wine-dark);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 25px;
+  line-height: 1;
+}
+
+
+.card-description {
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+}
+
+
+.card-arrow {
+  position: absolute;
+
+  right: 18px;
+  bottom: 14px;
+
+  color: var(--gold);
+
+  font-size: 16px;
+
+  transition: transform .3s ease;
+}
+
+
+.discovery-card:hover .card-arrow {
+  transform: translate(3px,-3px);
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area {
+  margin-top: 23px;
+
+  text-align: center;
+}
+
+
+.progress-line {
+  width: 120px;
+  height: 2px;
+
+  margin: 0 auto 8px;
+
+  background: rgba(183,150,94,.15);
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+
+  background: var(--gold);
+
+  transition: width .7s cubic-bezier(.22,1,.36,1);
+}
+
+
+#progressText {
+  color: var(--muted);
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+
+.bottom-note {
+  margin-top: 13px;
+
+  color: #a29496;
+
+  text-align: center;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .35s ease,
+    visibility .35s;
+}
+
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(43,25,31,.45);
+
+  backdrop-filter: blur(10px);
+}
+
+
+.modal-box {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 390px);
+
+  padding: 30px 26px 25px;
+
+  border-radius: 24px;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 30px 70px rgba(40,20,25,.2);
+
+  transform: translateY(30px) scale(.94);
+
+  transition:
+    transform .5s cubic-bezier(.22,1,.36,1);
+}
+
+
+.modal.active .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+
+.close-button {
+  position: absolute;
+
+  right: 17px;
+  top: 15px;
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(103,38,56,.07);
+
+  color: var(--wine);
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+.modal-top-line {
+  width: 35px;
+  height: 2px;
+
+  background: var(--gold);
+
+  margin-bottom: 17px;
+}
+
+
+.modal-eyebrow {
+  color: var(--gold);
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.modal-icon {
+  margin-top: 15px;
+
+  color: var(--wine);
+
+  font-size: 38px;
+}
+
+
+.modal-box h3 {
+  margin-top: 4px;
+
+  color: var(--wine-dark);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 37px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+
+.modal-text {
+  margin-top: 16px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+
+.modal-button {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 22px;
+
+  border: 1px solid rgba(103,38,56,.15);
+
+  border-radius: 100px;
+
+  background: transparent;
+
+  color: var(--wine);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.modal-button span {
+  margin-left: 8px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-height: 700px) {
+
+  .opening-title {
+    font-size: 58px;
+  }
+
+  .envelope-area {
+    margin-top: 18px;
+    transform: scale(.88);
+  }
+
+  .tap-instruction {
+    margin-top: -8px;
+  }
+
+  .enter-button {
+    height: 52px;
+    margin-top: 12px;
+  }
+
+  .discovery-header h2 {
+    font-size: 35px;
+  }
+
+  .discovery-title {
+    font-size: 22px;
+  }
+
+  .discovery-grid {
+    margin-top: 17px;
+    gap: 8px;
+  }
+
+  .discovery-card {
+    min-height: 94px;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+
+  }
