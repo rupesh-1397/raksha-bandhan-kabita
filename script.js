@@ -1,492 +1,197 @@
-const opening = document.getElementById("opening");
-const discovery = document.getElementById("discovery");
-const enterBtn = document.getElementById("enterBtn");
+// ============ PETALS ============
+(function petals(){
+  const wrap = document.getElementById('petals');
+  const count = window.innerWidth < 500 ? 14 : 22;
+  for(let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (9 + Math.random()*10) + 's';
+    p.style.animationDelay = (Math.random()*10) + 's';
+    p.style.opacity = 0.3 + Math.random()*0.4;
+    p.style.background = Math.random() > 0.5 ? 'var(--rose)' : 'var(--gold-soft)';
+    wrap.appendChild(p);
+  }
+})();
 
-const modal = document.getElementById("modal");
-const closeModal = document.getElementById("closeModal");
-const modalContinue = document.getElementById("modalContinue");
+// ============ SCREEN NAV ============
+const cover = document.getElementById('cover');
+const discovery = document.getElementById('discovery');
+const locker = document.getElementById('locker');
+const rakhi = document.getElementById('rakhi');
+const finalScreen = document.getElementById('final');
 
-const modalEyebrow = document.getElementById("modalEyebrow");
-const modalIcon = document.getElementById("modalIcon");
-const modalTitle = document.getElementById("modalTitle");
-const modalText = document.getElementById("modalText");
+document.getElementById('btnEnter').addEventListener('click', () => {
+  cover.classList.add('hidden');
+  discovery.classList.remove('hidden');
+  window.scrollTo({top:0, behavior:'instant'});
+});
 
-const progressText = document.getElementById("progressText");
-
-const memories = document.getElementById("memories");
-const finalReveal = document.getElementById("finalReveal");
-const continueBtn = document.getElementById("continueBtn");
-
-const rakhiBtn = document.getElementById("rakhiBtn");
-const rakhiMessage = document.getElementById("rakhiMessage");
-
-const photoViewer = document.getElementById("photoViewer");
-const viewerImage = document.getElementById("viewerImage");
-const closePhoto = document.getElementById("closePhoto");
-
-let discovered = new Set();
-
-
-/* ================= CONTENT ================= */
-
-const surprises = {
-
+// ============ MODAL CONTENT ============
+const CONTENT = {
   report: {
-
-    eyebrow: "THE OFFICIAL CASE FILE",
-
-    icon: "✦",
-
-    title: "Kabita Shah",
-
-    text: `
-
-      <strong>SUBJECT:</strong> Kabita<br>
-      <strong>KNOWN ALIAS:</strong> "Bro"<br><br>
-
-      After years of extremely serious investigation,
-      several suspicious activities have been uncovered.
-
-      <br><br>
-
-      📺 <strong>Remote Wars</strong><br>
-      Repeated childhood disputes over television ownership.
-
-      <br><br>
-
-      🧹 <strong>The Great Cleanup Incident</strong><br>
-      Subject becomes angry. Things get thrown.
-      Somehow, the cleanup department becomes... me. 🥲
-
-      <br><br>
-
-      🤐 <strong>Secret-Keeping Failure</strong><br>
-      Confidential information has approximately
-      three minutes of survival around the subject.
-
-      <br><br>
-
-      🛍️ <strong>Shopping Investigation</strong><br>
-      Subject can spend an impressive amount of time
-      looking for clothes online.
-
-      <br><br>
-
-      🔮 <strong>The Fortune Teller Files</strong><br>
-      Two children once seriously searched for fortune tellers,
-      made appointments and investigated their future.
-
-      <br><br>
-
-      <strong>FINAL VERDICT:</strong><br>
-
-      Guilty of being annoying, unpredictable,
-      impossible to keep secrets from...
-
-      <br><br>
-
-      ...and somehow still one of the most important people
-      in my life.
-
+    title: 'Official Case File',
+    html: `
+      <p class="stamp-mark">SIBLING INVESTIGATION UNIT</p>
+      <h3>Subject: Kabita Shah, a.k.a. "Bro"</h3>
+      <p><strong>Status:</strong> Repeat offender. No remorse shown.</p>
+      <ul>
+        <li><strong>Remote Control Larceny</strong> &mdash; Subject has, on multiple occasions, seized the TV remote and refused to relinquish it under any negotiation. Case remains open since childhood.</li>
+        <li><strong>Chronic Mess Generation</strong> &mdash; Subject creates disorder at scale, then exits the scene. Cleanup consistently performed by the undersigned (me).</li>
+        <li><strong>Confidentiality Breach, Repeated</strong> &mdash; Subject is constitutionally incapable of keeping a secret longer than 24 hours. Multiple informants confirm.</li>
+        <li><strong>Excessive Browsing Behaviour</strong> &mdash; Subject has been found, at all hours, scrolling clothing sites with no purchase intent whatsoever. Just looking, apparently. For three hours.</li>
+        <li><strong>Unauthorized Protection Detail</strong> &mdash; Subject has repeatedly and without being asked, stepped in to shield the undersigned from trouble, including from Mama's temper. This charge could not, in good conscience, be held against her.</li>
+      </ul>
+      <p><strong>Verdict:</strong> Guilty on all counts. Sentence: one lifetime of being called "Bro" and being loved anyway.</p>
     `
   },
-
-
   letter: {
-
-    eyebrow: "SOMETHING I DON'T SAY ENOUGH",
-
-    icon: "♡",
-
-    title: "Dear Bro...",
-
-    text: `
-
-      I don't think I've ever properly told you
-      how important you are to me.
-
-      <br><br>
-
-      You're technically my cousin,
-      but honestly, I've never really thought of you that way.
-
-      I grew up with you.
-
-      <br><br>
-
-      We fought over the TV remote.
-      We survived your angry moments.
-      I cleaned up the disasters that followed. 😂
-
-      And somehow, after all of that,
-      we still ended up being there for each other.
-
-      <br><br>
-
-      You've supported me more times than I can count.
-
-      You've helped me when I needed it,
-      stood by me when things weren't easy,
-      and even protected me when I was in trouble.
-
-      <br><br>
-
-      And yes...
-
-      <br>
-
-      <strong>YOU STILL CANNOT KEEP A SECRET. 😂</strong>
-
-      <br><br>
-
-      But honestly,
-      I wouldn't trade all those crazy little memories
-      for anything.
-
-      <br><br>
-
-      Wherever life takes us,
-      I hope we never become strangers to each other.
-
-      <br><br>
-
-      Happy Raksha Bandhan, Bro. ❤️
-
+    title: 'The Letter',
+    html: `
+      <p>Some things are easier to write than to say out loud, so here it is.</p>
+      <p>I've known you since I was about three years old, living under the same roof, which basically makes you my sister &mdash; not "practically," not "like a sister," just my sister, full stop. Cousin was never the right word for us.</p>
+      <p>You fought me for the remote and lost gracefully, made messes I quietly cleaned without ever really minding, and told my secrets to at least two people before I'd even finished telling them to you. And somehow none of that ever mattered, because the moment things got hard &mdash; especially with Mama &mdash; you were the one standing in front of me, not behind.</p>
+      <p>I don't say this enough, so consider this the one time it's in writing: thank you for being the kind of sister who shows up. I see it. I've always seen it.</p>
     `
   },
-
-
   mystery: {
-
-    eyebrow: "TOP SECRET • EYES ONLY",
-
-    icon: "◇",
-
-    title: "The Real Secret",
-
-    text: `
-
-      You thought the secret was about you.
-
-      <br><br>
-
-      Technically...
-
-      <strong>it is.</strong>
-
-      <br><br>
-
-      But the real secret is that
-      somewhere between the TV remote fights,
-      angry messes, shopping investigations,
-      terrible secret-keeping
-      and fortune-teller missions...
-
-      <br><br>
-
-      you became much more than just my cousin.
-
-      <br><br>
-
-      You became my <strong>Bro.</strong>
-
-      <br><br>
-
-      And there's one more thing waiting for you.
-
-      <br><br>
-
-      <em>Keep going.</em> 👀
-
+    title: 'The Mystery',
+    html: `
+      <p>You found something I wasn't planning to explain yet...</p>
+      <p>There's a locked drawer in this case &mdash; a few photographs, a thread that hasn't been tied yet, and a message I've been putting off for years. All three are somewhere on this page, waiting.</p>
+      <p>Finish opening the files. The rest will find you.</p>
     `
   }
-
 };
 
+const cards = document.querySelectorAll('.card');
+const overlay = document.getElementById('modalOverlay');
+const modalInner = document.getElementById('modalInner');
+const modalClose = document.getElementById('modalClose');
+const progressFill = document.getElementById('progressFill');
+const progressLabel = document.getElementById('progressLabel');
+const lockerHint = document.getElementById('lockerHint');
 
-/* ================= ENTER ================= */
+let openedCount = 0;
+const opened = new Set();
 
-enterBtn.addEventListener("click", () => {
-
-  enterBtn.classList.add("clicked");
-
-  document.body.classList.add("transitioning");
-
-  opening.classList.remove("active");
-
-  setTimeout(() => {
-
-    discovery.classList.add("active");
-
-  }, 500);
-
-});
-
-
-/* ================= DISCOVERY ================= */
-
-document.querySelectorAll(".discovery-card").forEach(card => {
-
-  card.addEventListener("click", () => {
-
-    const type = card.dataset.type;
-
-    discovered.add(type);
-
-    card.classList.add("discovered");
-
-    updateProgress();
-
-    openModal(type);
-
-  });
-
-});
-
-
-function updateProgress() {
-
-  progressText.textContent =
-    `${discovered.size} / 3 DISCOVERED`;
-
+function openModal(key){
+  const data = CONTENT[key];
+  modalInner.innerHTML = `<h3>${data.title}</h3>${data.html}`;
+  overlay.classList.remove('hidden');
+  requestAnimationFrame(() => overlay.classList.add('show'));
 }
 
-
-/* ================= MODALS ================= */
-
-function openModal(type) {
-
-  const item = surprises[type];
-
-  modalEyebrow.textContent = item.eyebrow;
-  modalIcon.textContent = item.icon;
-  modalTitle.textContent = item.title;
-  modalText.innerHTML = item.text;
-
-  modal.classList.add("open");
-
-  document.body.style.overflow = "hidden";
-
+function closeModal(){
+  overlay.classList.remove('show');
+  setTimeout(() => overlay.classList.add('hidden'), 300);
 }
 
-
-function closeTheModal() {
-
-  modal.classList.remove("open");
-
-  document.body.style.overflow = "";
-
-}
-
-
-closeModal.addEventListener("click", closeTheModal);
-
-modalContinue.addEventListener("click", closeTheModal);
-
-document.querySelector(".modal-backdrop")
-  .addEventListener("click", closeTheModal);
-
-
-/* ================= ALL DISCOVERED ================= */
-
-function checkCompletion() {
-
-  if (discovered.size === 3) {
-
-    setTimeout(() => {
-
-      memories.classList.add("active");
-
-      memories.scrollIntoView({
-        behavior: "smooth"
-      });
-
-    }, 700);
-
-  }
-
-}
-
-
-/* Check whenever a card is clicked */
-
-document.querySelectorAll(".discovery-card").forEach(card => {
-
-  card.addEventListener("click", () => {
-
-    setTimeout(checkCompletion, 300);
-
-  });
-
-});
-
-
-/* ================= PHOTO VIEWER ================= */
-
-document.querySelectorAll(".memory-photo").forEach(photo => {
-
-  photo.addEventListener("click", () => {
-
-    const image = photo.dataset.image;
-
-    viewerImage.src = image;
-
-    photoViewer.classList.add("open");
-
-    document.body.style.overflow = "hidden";
-
-  });
-
-});
-
-
-function closePhotoViewer() {
-
-  photoViewer.classList.remove("open");
-
-  document.body.style.overflow = "";
-
-}
-
-
-closePhoto.addEventListener("click", closePhotoViewer);
-
-photoViewer.addEventListener("click", event => {
-
-  if (event.target === photoViewer) {
-
-    closePhotoViewer();
-
-  }
-
-});
-
-
-/* ================= CONTINUE ================= */
-
-continueBtn.addEventListener("click", () => {
-
-  memories.classList.remove("active");
-
-  finalReveal.classList.add("active");
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-});
-
-
-/* ================= RAKHI ================= */
-
-rakhiBtn.addEventListener("click", () => {
-
-  if (rakhiMessage.classList.contains("show")) {
-    return;
-  }
-
-  rakhiBtn.classList.add("rakhi-tied");
-
-  setTimeout(() => {
-
-    rakhiMessage.classList.add("show");
-
-    createCelebration();
-
-  }, 900);
-
-});
-
-
-/* ================= CELEBRATION ================= */
-
-function createCelebration() {
-
-  const symbols = ["✦", "✧", "♡", "◇"];
-
-  for (let i = 0; i < 24; i++) {
-
-    const particle = document.createElement("span");
-
-    particle.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    particle.style.position = "fixed";
-
-    particle.style.left = "50%";
-    particle.style.top = "50%";
-
-    particle.style.zIndex = "200";
-
-    particle.style.pointerEvents = "none";
-
-    particle.style.color =
-      i % 2 === 0 ? "#b79258" : "#6b283b";
-
-    particle.style.fontSize =
-      `${10 + Math.random() * 12}px`;
-
-    document.body.appendChild(particle);
-
-    const angle =
-      Math.random() * Math.PI * 2;
-
-    const distance =
-      100 + Math.random() * 170;
-
-    const x =
-      Math.cos(angle) * distance;
-
-    const y =
-      Math.sin(angle) * distance;
-
-    particle.animate(
-
-      [
-        {
-          transform: "translate(-50%, -50%) scale(.4)",
-          opacity: 0
-        },
-
-        {
-          transform:
-            `translate(${x}px, ${y}px) scale(1.2)`,
-          opacity: 1
-        },
-
-        {
-          transform:
-            `translate(${x * 1.2}px, ${y * 1.2}px) scale(.4)`,
-          opacity: 0
-        }
-      ],
-
-      {
-        duration: 1300 + Math.random() * 700,
-        easing: "cubic-bezier(.2,.8,.2,1)"
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.card;
+    openModal(key);
+    if(!opened.has(key)){
+      opened.add(key);
+      card.classList.add('opened');
+      openedCount++;
+      progressFill.style.width = (openedCount/3*100) + '%';
+      progressLabel.textContent = `${openedCount} / 3 files opened`;
+      if(openedCount === 3){
+        lockerHint.classList.add('show');
+        setTimeout(() => {
+          locker.classList.remove('hidden');
+        }, 700);
       }
-
-    ).onfinish = () => {
-
-      particle.remove();
-
-    };
-
-  }
-
-}
-
-
-/* ================= ESC KEY ================= */
-
-document.addEventListener("keydown", event => {
-
-  if (event.key === "Escape") {
-
-    closeTheModal();
-    closePhotoViewer();
-
-  }
-
+    }
+  });
 });
+
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+
+// reveal rakhi + final sections once locker is visible (simple scroll-linked flow)
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      if(entry.target.id === 'locker'){
+        rakhi.classList.remove('hidden');
+      }
+    }
+  });
+}, {threshold:0.4});
+revealObserver.observe(locker);
+
+// Always allow scrolling to final after rakhi tied (handled below)
+
+// ============ RAKHI TIE ============
+const rakhiBtn = document.getElementById('rakhiBtn');
+const rakhiMessage = document.getElementById('rakhiMessage');
+let tied = false;
+
+rakhiBtn.addEventListener('click', () => {
+  if(tied) return;
+  tied = true;
+  rakhiBtn.classList.add('tied');
+  rakhiMessage.classList.remove('hidden');
+  requestAnimationFrame(() => rakhiMessage.classList.add('reveal'));
+  fireConfetti();
+  setTimeout(() => finalScreen.classList.remove('hidden'), 900);
+});
+
+// ============ SECRET REVEAL ============
+const secretBtn = document.getElementById('secretBtn');
+const secretReveal = document.getElementById('secretReveal');
+secretBtn.addEventListener('click', () => {
+  secretReveal.classList.remove('hidden');
+  requestAnimationFrame(() => secretReveal.classList.add('reveal'));
+  secretBtn.style.display = 'none';
+});
+
+// ============ CONFETTI ============
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function fireConfetti(){
+  const colors = ['#5E1A26', '#C6A15B', '#C98A93', '#F6EFE4'];
+  const pieces = Array.from({length: 90}, () => ({
+    x: canvas.width/2 + (Math.random()-0.5)*80,
+    y: canvas.height*0.35,
+    vx: (Math.random()-0.5)*8,
+    vy: -Math.random()*10 - 4,
+    size: 4 + Math.random()*4,
+    color: colors[Math.floor(Math.random()*colors.length)],
+    rot: Math.random()*360,
+    vr: (Math.random()-0.5)*10,
+    gravity: 0.25 + Math.random()*0.15
+  }));
+
+  let frame = 0;
+  function tick(){
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      p.vy += p.gravity;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      if(p.y < canvas.height + 20) alive = true;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI/180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+      ctx.restore();
+    });
+    frame++;
+    if(alive && frame < 240){
+      requestAnimationFrame(tick);
+    } else {
+      ctx.clearRect(0,0,canvas.width, canvas.height);
+    }
+  }
+  tick();
+}
