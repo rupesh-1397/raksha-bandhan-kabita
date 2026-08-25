@@ -1,16 +1,6 @@
-/* ==========================================
-   KABITA SURPRISE WEBSITE
-   INTERACTION ENGINE
-========================================== */
-
-
 const opening = document.getElementById("opening");
 const discovery = document.getElementById("discovery");
-
-const envelope = document.getElementById("envelope");
 const enterBtn = document.getElementById("enterBtn");
-
-const transitionFlash = document.getElementById("transitionFlash");
 
 const modal = document.getElementById("modal");
 const closeModal = document.getElementById("closeModal");
@@ -22,169 +12,220 @@ const modalTitle = document.getElementById("modalTitle");
 const modalText = document.getElementById("modalText");
 
 const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
+
+const memories = document.getElementById("memories");
+const finalReveal = document.getElementById("finalReveal");
+const continueBtn = document.getElementById("continueBtn");
+
+const rakhiBtn = document.getElementById("rakhiBtn");
+const rakhiMessage = document.getElementById("rakhiMessage");
+
+const photoViewer = document.getElementById("photoViewer");
+const viewerImage = document.getElementById("viewerImage");
+const closePhoto = document.getElementById("closePhoto");
+
+let discovered = new Set();
 
 
-/* ==========================================
-   DISCOVERY DATA
-========================================== */
+/* ================= CONTENT ================= */
 
-const discoveries = {
+const surprises = {
 
-  flower: {
+  report: {
 
-    eyebrow: "CONFIDENTIAL CASE FILE",
+    eyebrow: "THE OFFICIAL CASE FILE",
 
     icon: "✦",
 
-    title: "The Case File",
+    title: "Kabita Shah",
 
     text: `
-      <strong>Subject:</strong> Kabita Shah<br><br>
 
-      After an extensive investigation, several suspicious
-      behaviours have been documented.<br><br>
+      <strong>SUBJECT:</strong> Kabita<br>
+      <strong>KNOWN ALIAS:</strong> "Bro"<br><br>
 
-      • Unreasonably good at winning arguments.<br>
-      • Gives advice even when nobody requested it.<br>
-      • Somehow always knows when food is being opened.<br>
-      • Has an impressive ability to be right...
-      even when she isn't.<br><br>
+      After years of extremely serious investigation,
+      several suspicious activities have been uncovered.
 
-      <em>Further evidence is currently being collected.</em>
+      <br><br>
+
+      📺 <strong>Remote Wars</strong><br>
+      Repeated childhood disputes over television ownership.
+
+      <br><br>
+
+      🧹 <strong>The Great Cleanup Incident</strong><br>
+      Subject becomes angry. Things get thrown.
+      Somehow, the cleanup department becomes... me. 🥲
+
+      <br><br>
+
+      🤐 <strong>Secret-Keeping Failure</strong><br>
+      Confidential information has approximately
+      three minutes of survival around the subject.
+
+      <br><br>
+
+      🛍️ <strong>Shopping Investigation</strong><br>
+      Subject can spend an impressive amount of time
+      looking for clothes online.
+
+      <br><br>
+
+      🔮 <strong>The Fortune Teller Files</strong><br>
+      Two children once seriously searched for fortune tellers,
+      made appointments and investigated their future.
+
+      <br><br>
+
+      <strong>FINAL VERDICT:</strong><br>
+
+      Guilty of being annoying, unpredictable,
+      impossible to keep secrets from...
+
+      <br><br>
+
+      ...and somehow still one of the most important people
+      in my life.
+
     `
-
   },
 
 
   letter: {
 
-    eyebrow: "CLASSIFIED · HANDLE WITH CARE",
+    eyebrow: "SOMETHING I DON'T SAY ENOUGH",
 
     icon: "♡",
 
-    title: "The Letter",
+    title: "Dear Bro...",
 
     text: `
-      Okay, this part is different.<br><br>
 
-      Some things are easy to joke about.
-      Some things are much harder to say out loud.<br><br>
+      I don't think I've ever properly told you
+      how important you are to me.
 
-      So there is a proper letter waiting for you here —
-      one that actually comes from me.<br><br>
+      <br><br>
 
-      <em>
-      The placeholder is temporary.
-      The real version is coming.
-      </em>
+      You're technically my cousin,
+      but honestly, I've never really thought of you that way.
+
+      I grew up with you.
+
+      <br><br>
+
+      We fought over the TV remote.
+      We survived your angry moments.
+      I cleaned up the disasters that followed. 😂
+
+      And somehow, after all of that,
+      we still ended up being there for each other.
+
+      <br><br>
+
+      You've supported me more times than I can count.
+
+      You've helped me when I needed it,
+      stood by me when things weren't easy,
+      and even protected me when I was in trouble.
+
+      <br><br>
+
+      And yes...
+
+      <br>
+
+      <strong>YOU STILL CANNOT KEEP A SECRET. 😂</strong>
+
+      <br><br>
+
+      But honestly,
+      I wouldn't trade all those crazy little memories
+      for anything.
+
+      <br><br>
+
+      Wherever life takes us,
+      I hope we never become strangers to each other.
+
+      <br><br>
+
+      Happy Raksha Bandhan, Bro. ❤️
+
     `
-
   },
 
 
-  gift: {
+  mystery: {
 
-    eyebrow: "TOP SECRET",
+    eyebrow: "TOP SECRET • EYES ONLY",
 
     icon: "◇",
 
-    title: "The Mystery",
+    title: "The Real Secret",
 
     text: `
-      Hmm...<br><br>
 
-      You found this surprisingly quickly.<br><br>
+      You thought the secret was about you.
 
-      I was actually planning to hide this a little
-      better.<br><br>
+      <br><br>
 
-      There is something else waiting inside this website,
-      but I'm not telling you yet.<br><br>
+      Technically...
 
-      <strong>You'll have to keep exploring.</strong>
+      <strong>it is.</strong>
+
+      <br><br>
+
+      But the real secret is that
+      somewhere between the TV remote fights,
+      angry messes, shopping investigations,
+      terrible secret-keeping
+      and fortune-teller missions...
+
+      <br><br>
+
+      you became much more than just my cousin.
+
+      <br><br>
+
+      You became my <strong>Bro.</strong>
+
+      <br><br>
+
+      And there's one more thing waiting for you.
+
+      <br><br>
+
+      <em>Keep going.</em> 👀
+
     `
-
   }
 
 };
 
 
-/* ==========================================
-   OPEN ENVELOPE
-========================================== */
+/* ================= ENTER ================= */
 
-function openSurprise() {
+enterBtn.addEventListener("click", () => {
 
-  if (envelope.classList.contains("opening")) {
-    return;
-  }
+  enterBtn.classList.add("clicked");
 
-  envelope.classList.add("opening");
+  document.body.classList.add("transitioning");
 
-  enterBtn.disabled = true;
-
-  /*
-     Small delay gives the envelope animation
-     time to breathe before the cinematic transition.
-  */
+  opening.classList.remove("active");
 
   setTimeout(() => {
-
-    transitionFlash.classList.remove("active");
-
-    void transitionFlash.offsetWidth;
-
-    transitionFlash.classList.add("active");
-
-  }, 650);
-
-
-  /*
-     Switch screens after the envelope opens.
-  */
-
-  setTimeout(() => {
-
-    opening.classList.remove("active");
 
     discovery.classList.add("active");
 
-  }, 850);
+  }, 500);
+
+});
 
 
-  /*
-     Clean up.
-  */
+/* ================= DISCOVERY ================= */
 
-  setTimeout(() => {
-
-    envelope.classList.remove("opening");
-
-  }, 1500);
-
-}
-
-
-/* ==========================================
-   BUTTON + ENVELOPE
-========================================== */
-
-enterBtn.addEventListener("click", openSurprise);
-
-envelope.addEventListener("click", openSurprise);
-
-
-/* ==========================================
-   DISCOVERY SYSTEM
-========================================== */
-
-const cards = document.querySelectorAll(".discovery-card");
-
-const discovered = new Set();
-
-
-cards.forEach(card => {
+document.querySelectorAll(".discovery-card").forEach(card => {
 
   card.addEventListener("click", () => {
 
@@ -192,84 +233,37 @@ cards.forEach(card => {
 
     discovered.add(type);
 
+    card.classList.add("discovered");
+
     updateProgress();
 
     openModal(type);
-
-    /*
-       Little card celebration.
-    */
-
-    card.animate(
-
-      [
-        {
-          transform: "scale(1)"
-        },
-
-        {
-          transform: "scale(.94)"
-        },
-
-        {
-          transform: "scale(1.025)"
-        },
-
-        {
-          transform: "scale(1)"
-        }
-      ],
-
-      {
-        duration: 500,
-        easing: "cubic-bezier(.22,1,.36,1)"
-      }
-
-    );
 
   });
 
 });
 
 
-/* ==========================================
-   PROGRESS
-========================================== */
-
 function updateProgress() {
 
-  const count = discovered.size;
-
-  progressText.textContent = `${count} / 3 discovered`;
-
-  progressBar.style.width = `${(count / 3) * 100}%`;
+  progressText.textContent =
+    `${discovered.size} / 3 DISCOVERED`;
 
 }
 
 
-/* ==========================================
-   MODAL
-========================================== */
+/* ================= MODALS ================= */
 
 function openModal(type) {
 
-  const data = discoveries[type];
+  const item = surprises[type];
 
-  if (!data) {
-    return;
-  }
+  modalEyebrow.textContent = item.eyebrow;
+  modalIcon.textContent = item.icon;
+  modalTitle.textContent = item.title;
+  modalText.innerHTML = item.text;
 
-
-  modalEyebrow.textContent = data.eyebrow;
-
-  modalIcon.textContent = data.icon;
-
-  modalTitle.textContent = data.title;
-
-  modalText.innerHTML = data.text;
-
-
-  modal.classList.add("active");
+  modal.classList.add("open");
 
   document.body.style.overflow = "hidden";
 
@@ -278,7 +272,7 @@ function openModal(type) {
 
 function closeTheModal() {
 
-  modal.classList.remove("active");
+  modal.classList.remove("open");
 
   document.body.style.overflow = "";
 
@@ -289,60 +283,210 @@ closeModal.addEventListener("click", closeTheModal);
 
 modalContinue.addEventListener("click", closeTheModal);
 
-
-/* ==========================================
-   BACKDROP CLOSE
-========================================== */
-
-document
-  .querySelector(".modal-backdrop")
+document.querySelector(".modal-backdrop")
   .addEventListener("click", closeTheModal);
 
 
-/* ==========================================
-   ESCAPE KEY
-========================================== */
+/* ================= ALL DISCOVERED ================= */
 
-document.addEventListener("keydown", event => {
+function checkCompletion() {
 
-  if (event.key === "Escape") {
+  if (discovered.size === 3) {
 
-    closeTheModal();
+    setTimeout(() => {
+
+      memories.classList.add("active");
+
+      memories.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }, 700);
+
+  }
+
+}
+
+
+/* Check whenever a card is clicked */
+
+document.querySelectorAll(".discovery-card").forEach(card => {
+
+  card.addEventListener("click", () => {
+
+    setTimeout(checkCompletion, 300);
+
+  });
+
+});
+
+
+/* ================= PHOTO VIEWER ================= */
+
+document.querySelectorAll(".memory-photo").forEach(photo => {
+
+  photo.addEventListener("click", () => {
+
+    const image = photo.dataset.image;
+
+    viewerImage.src = image;
+
+    photoViewer.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+  });
+
+});
+
+
+function closePhotoViewer() {
+
+  photoViewer.classList.remove("open");
+
+  document.body.style.overflow = "";
+
+}
+
+
+closePhoto.addEventListener("click", closePhotoViewer);
+
+photoViewer.addEventListener("click", event => {
+
+  if (event.target === photoViewer) {
+
+    closePhotoViewer();
 
   }
 
 });
 
 
-/* ==========================================
-   PREVENT DOUBLE TAP ZOOM
-========================================== */
+/* ================= CONTINUE ================= */
 
-let lastTouchEnd = 0;
+continueBtn.addEventListener("click", () => {
 
-document.addEventListener(
-  "touchend",
-  event => {
+  memories.classList.remove("active");
 
-    const now = Date.now();
+  finalReveal.classList.add("active");
 
-    if (now - lastTouchEnd <= 300) {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
-      event.preventDefault();
+});
 
-    }
 
-    lastTouchEnd = now;
+/* ================= RAKHI ================= */
 
-  },
-  {
-    passive: false
+rakhiBtn.addEventListener("click", () => {
+
+  if (rakhiMessage.classList.contains("show")) {
+    return;
   }
-);
+
+  rakhiBtn.classList.add("rakhi-tied");
+
+  setTimeout(() => {
+
+    rakhiMessage.classList.add("show");
+
+    createCelebration();
+
+  }, 900);
+
+});
 
 
-/* ==========================================
-   INITIAL STATE
-========================================== */
+/* ================= CELEBRATION ================= */
 
-updateProgress();
+function createCelebration() {
+
+  const symbols = ["✦", "✧", "♡", "◇"];
+
+  for (let i = 0; i < 24; i++) {
+
+    const particle = document.createElement("span");
+
+    particle.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    particle.style.position = "fixed";
+
+    particle.style.left = "50%";
+    particle.style.top = "50%";
+
+    particle.style.zIndex = "200";
+
+    particle.style.pointerEvents = "none";
+
+    particle.style.color =
+      i % 2 === 0 ? "#b79258" : "#6b283b";
+
+    particle.style.fontSize =
+      `${10 + Math.random() * 12}px`;
+
+    document.body.appendChild(particle);
+
+    const angle =
+      Math.random() * Math.PI * 2;
+
+    const distance =
+      100 + Math.random() * 170;
+
+    const x =
+      Math.cos(angle) * distance;
+
+    const y =
+      Math.sin(angle) * distance;
+
+    particle.animate(
+
+      [
+        {
+          transform: "translate(-50%, -50%) scale(.4)",
+          opacity: 0
+        },
+
+        {
+          transform:
+            `translate(${x}px, ${y}px) scale(1.2)`,
+          opacity: 1
+        },
+
+        {
+          transform:
+            `translate(${x * 1.2}px, ${y * 1.2}px) scale(.4)`,
+          opacity: 0
+        }
+      ],
+
+      {
+        duration: 1300 + Math.random() * 700,
+        easing: "cubic-bezier(.2,.8,.2,1)"
+      }
+
+    ).onfinish = () => {
+
+      particle.remove();
+
+    };
+
+  }
+
+}
+
+
+/* ================= ESC KEY ================= */
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape") {
+
+    closeTheModal();
+    closePhotoViewer();
+
+  }
+
+});
